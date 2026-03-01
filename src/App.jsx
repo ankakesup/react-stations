@@ -22,22 +22,16 @@ export const App = () => {
 
         <img src={dogUrl} />
 
-        <button onClick={e => setDogUrl( changeImage() )}>更新</button>
+        <button onClick={e => 
+          fetch("https://dog.ceo/api/breeds/image/random")
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message)
+                setDogUrl(data.message)
+              })
+          }>更新</button>
 
       </body>
     </>
   )
-}
-
-const changeImage = () => {
-  let url =""
-
-  fetch("https://dog.ceo/api/breeds/image/random")
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.message)
-        url = "{data.message}"
-      })
-
-  return url
 }
