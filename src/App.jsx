@@ -1,14 +1,26 @@
 // DO NOT DELETE
 
 import './App.css'
+import { useState } from 'react'
 
 /**
  * @type {() => JSX.Element}
  */
 export const App = () => {
+
+  const [dogUrl, setDogUrl] = useState("https://images.dog.ceo/breeds/spaniel-brittany/n02101388_6057.jpg")
+
   return (
-    <div>
-      <h2>Hello, world!</h2>
-    </div>
+    <>
+      <header>
+        <title>React Test</title>
+      </header>
+
+      <body>
+        <p>犬の画像を表示するサイトです。</p>
+
+        <img src={dogUrl} />
+      </body>
+    </>
   )
 }
