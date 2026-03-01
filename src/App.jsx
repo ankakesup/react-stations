@@ -1,5 +1,6 @@
 // DO NOT DELETE
 
+import { data } from 'autoprefixer'
 import './App.css'
 import { useState } from 'react'
 
@@ -21,9 +22,22 @@ export const App = () => {
 
         <img src={dogUrl} />
 
-        <button onClick={e => setDogUrl("https://images.dog.ceo/breeds/hound-english/n02089973_1132.jpg")}>更新</button>
+        <button onClick={e => setDogUrl( changeImage() )}>更新</button>
 
       </body>
     </>
   )
+}
+
+const changeImage = () => {
+  let url =""
+
+  fetch("https://dog.ceo/api/breeds/image/random")
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message)
+        url = "{data.message}"
+      })
+
+  return url
 }
