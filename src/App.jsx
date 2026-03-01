@@ -1,6 +1,5 @@
 // DO NOT DELETE
 
-import { data } from 'autoprefixer'
 import './App.css'
 import { useState } from 'react'
 
@@ -13,25 +12,23 @@ export const App = () => {
 
   return (
     <>
-      <header>
-        <title>React Test</title>
+      <header className='header'>
+        <h2>React Test</h2>
       </header>
+    
+      <p>犬の画像を表示するサイトです。</p>
 
-      <body>
-        <p>犬の画像を表示するサイトです。</p>
+      <img src={dogUrl} />
 
-        <img src={dogUrl} />
+      <button onClick={e => 
+        fetch("https://dog.ceo/api/breeds/image/random")
+          .then(response => response.json())
+          .then(data => {
+              console.log(data.message)
+              setDogUrl(data.message)
+            })
+        }>更新</button>
 
-        <button onClick={e => 
-          fetch("https://dog.ceo/api/breeds/image/random")
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.message)
-                setDogUrl(data.message)
-              })
-          }>更新</button>
-
-      </body>
     </>
   )
 }
