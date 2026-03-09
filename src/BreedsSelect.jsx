@@ -6,6 +6,7 @@ export const BreedsSelect = ({breeds, selectBreed, selectedBreed}) => {
     <>
       {/* e.target.value でイベント(e)が起きた要素(target)のvalueを参照する */}
       <select value={selectedBreed} id="petName" onChange={(e) => selectBreed(e.target.value)}> 
+        {/* map: 配列内の */}
         {breeds.map( elem => (
           <option value={elem}>{elem}</option>
         ))}
